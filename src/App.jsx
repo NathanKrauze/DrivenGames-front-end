@@ -1,11 +1,20 @@
+import { Router } from "express";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+export default function App() {
 
   return (
-    <>
-      <h1>DrivenGames</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SingIn />} />
+        <Route path="/cadastro" element={<SingUp />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/cart" element={<ChekOut />} />
+
+      </Routes>
+    </BrowserRouter>
+
   )
+
 }
 
-export default App
