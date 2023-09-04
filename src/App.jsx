@@ -1,5 +1,8 @@
-import { Router } from "express";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SingIn from "./Pages/SingIn/SingIn";
+import HomePage from "./Pages/HomePage/HomePage";
+import SingUp from "./Pages/SingUp/SingUp";
+import ChekOut from "./Pages/ChekOut/ChekOut";
 
 export default function App() {
 
