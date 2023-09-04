@@ -1,39 +1,61 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { styled } from "styled-components"
+import styled from "styled-components"
+import NavBar from "../../components/Navbar";
+import Game from "../../components/Game";
+import { useContext, useEffect } from "react";
+import GamesContext from "../../contexts/GamesContext";
+import axios from "axios";
 
-export default function HomePage(){
+export default function HomePage() {
 
-    const games = ["fifa","fallguys","mario","lol","ff",]
+    const {games, setGames} = useContext(GamesContext);
 
-    const [gameSelected, setGameSelected] = useState([])
-    const navigate = useNavigate();
+    //mudar para o token do context
+    const config = {
+        headers:{
+            authorization: `Bearer ${"qweqwe"}`
+        }
+    }
 
-    function addGame(game){
-        alert(`clicou no ${game}`)
-        const arrayGameSelected = [...gameSelected,game]
-        setGameSelected(arrayGameSelected)
-       
-    } console.log(gameSelected)
-    return(
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_API_URL}/games`, config)
+            .then(res => setGames(res.data))
+            .catch(err => alert(err.response.data))
+    }, [])
+
+    return (
         <>
-            <Sidebar>{!gameSelected && "Não há itens no carrinho" } </Sidebar>
-            <ul>
-                {games.map( games => <Lista onClick={()=>addGame(games)}>{games}</Lista>)}
-                
-            </ul>
-        </>
+            <NavBar />
+            <ContentContainer>
+                <GamesContainer>
+                    <h1>Jogos</h1>
+                    <ul>
+                        {games.map(game => <Game game={game}/>)}
+                    </ul>
+                </GamesContainer>
+
+            </ContentContainer>
+            </>
     )
 }
 
-const Lista = styled.div`
-    margin:100px;
-    width:50px;
-    height:50px;
-    border: 2px solid black;
-`
-const Sidebar = styled.div`
-    width:300px;
-    height:300px;
-    background-color: aqua;
-`
+const ContentContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const GamesContainer = styled.div`
+    padding: 0 40px;
+    width: 100%;
+    h1{
+        font-size: 45px;
+        padding-bottom: 5px;
+    }
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        border-top: 2px solid #2A2A2A;
+    }
+`;
+
+const FilterContainer = styled.div``;
