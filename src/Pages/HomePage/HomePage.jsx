@@ -13,7 +13,7 @@ export default function HomePage() {
     //mudar para o token do context
     const config = {
         headers:{
-            authorization: `Bearer ${"qweqwe"}`
+            authorization: `Bearer ${token}`
         }
     }
 
