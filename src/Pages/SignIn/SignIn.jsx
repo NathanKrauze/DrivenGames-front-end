@@ -25,6 +25,8 @@ export default function SignIn() {
         setToken(newToken);
         localStorage.setItem('token', newToken);
         navigate('/home');
+
+        
     }
 
     function signIn(e) {

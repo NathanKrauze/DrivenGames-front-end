@@ -7,6 +7,7 @@ import GamesContext from "./contexts/GamesContext";
 import tokenContext from "./contexts/TokenContext";
 import { useState } from "react";
 
+
 export default function App() {
 
   const [games, setGames] = useState([])
@@ -14,6 +15,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+
       <tokenContext.Provider value={[token, setToken]}>
         <GamesContext.Provider value={{ games, setGames }}>
           <Routes>
@@ -24,6 +26,7 @@ export default function App() {
           </Routes>
         </GamesContext.Provider>
       </tokenContext.Provider>
+
     </BrowserRouter>
   )
 }

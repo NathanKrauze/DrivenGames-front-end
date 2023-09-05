@@ -6,18 +6,18 @@ import { useContext, useEffect, useState } from "react";
 import GamesContext from "../../contexts/GamesContext";
 import tokenContext from "../../contexts/TokenContext";
 import axios from "axios";
+import tokenContext from "../../contexts/TokenContext";
 
 export default function HomePage() {
 
     const {games, setGames} = useContext(GamesContext);
+  const [gameselected, setgameselected] = useState([])
+    const [token] = useContext(tokenContext);
     
-    const [gameselected, setgameselected] = useState([])
-
-    const {token} = useContext(tokenContext);
-    //mudar para o token do context
     const config = {
         headers:{
-            authorization: `Bearer ${"teste"}`
+            authorization: `Bearer ${token}`
+
         }
     }
 
