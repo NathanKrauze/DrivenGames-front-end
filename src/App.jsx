@@ -6,20 +6,23 @@ import CheckOut from "./Pages/CheckOut/CheckOut";
 import GamesContext from "./contexts/GamesContext";
 import { useState } from "react";
 
+
 export default function App() {
 
   const [games, setGames] = useState([])
 
   return (
     <BrowserRouter>
+
       <GamesContext.Provider value={{games, setGames}}>
         <Routes>
-          <Route path="/home" element={<SignIn />} />
+          <Route path="/" element={<SignIn />} />
           <Route path="/cadastro" element={<SignUp />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/cart" element={<CheckOut />} />
         </Routes>
       </GamesContext.Provider>
+
     </BrowserRouter>
   )
 }

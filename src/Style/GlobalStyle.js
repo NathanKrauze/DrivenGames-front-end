@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Rajdhani', sans-serif;
         color: white;
     }
+    body{
+        background-color: #121212;
+    }
 
 `
 export default GlobalStyle
