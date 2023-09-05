@@ -1,7 +1,8 @@
 import axios from "axios"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { styled } from "styled-components"
+import tokenContext from "../../contexts/TokenContext"
 
 
 
@@ -9,9 +10,10 @@ export default function PayForm({ setStatus, pay }) {
 
     const navigate = useNavigate()
 
+    const [token] = useContext(tokenContext)
     const [form, setForm] = useState({ cardName: "", cardNumber: "", securityNumber: "", expirationDate: "" })
 
-    function cancel() { 
+    function cancel() {
         setStatus("abled")
     }
 
@@ -20,18 +22,18 @@ export default function PayForm({ setStatus, pay }) {
 
         const config = {
             headers: {
-                Authorization: `Bearer "12fd56c6-ba57-45d0-b924-cb2c05d038ea"`
+                Authorization: `Bearer ${token}`
             }
         }
 
-        const URL = axios.post(`${import.meta.env.VITE_API_URL}/cart`, form)
+        const URL = axios.post(`${import.meta.env.VITE_API_URL}/cart`, form, config)
             .then(() => {
-                //alert("Muito Obrigado pela sua compra, o seu jogo está liberado aproveite-o!")
-                //navigate('/home')
+                alert("Muito Obrigado pela sua compra, o seu jogo está liberado aproveite-o!")
+                navigate('/home')
                 console.log("OK")
             })
             .catch((erro) =>
-                console.log("erro no catch")
+                console.log(erro.error)
             )
 
     }

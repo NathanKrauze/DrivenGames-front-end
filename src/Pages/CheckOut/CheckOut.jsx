@@ -11,8 +11,6 @@ export default function CheckOut() {
     const [userBuy, setUserBuy] = useState([])
     const [token] = useContext(tokenContext)
 
-    
-
     function payForm(e) {
 
         setStatus("disabled")
@@ -27,11 +25,18 @@ export default function CheckOut() {
             }
         }
 
-
         axios.get(`${import.meta.env.VITE_API_URL}/cart`, config)
             .then((res) => setUserBuy(res.data))
             .catch((erro) => console.log(erro.error))
     }, [])
+
+    function sumTotal() {
+        const newSum = gamesSelected.map(game => sum + game.price);
+        const newDiscount = gamesSelected.map(game => discount + (game.price * game.promotion));
+        setSum(newSum.reduce((acc, cur) => acc + cur, 0));
+        setDiscount(newDiscount.reduce((acc, cur) => acc + cur, 0));
+        descontoSomado = setSum - setDiscount;
+    }
 
     return (
 
@@ -87,19 +92,23 @@ export default function CheckOut() {
                             />
 
                         </div>
+                       
+                            <div className="productInformation">
+                                <br />
+                                <p>RESUMO DO PEDIDO</p> <br />
 
-                        <div className="productInformation">
-                            <br />
-                            <p>RESUMO DO PEDIDO</p> <br />
-                            <img src="https://www.esports.net/br/wp-content/uploads/sites/3/2022/08/codigo-gta-san-andreas.jpeg " /><br />
-                            <p>GTA San Andres</p> <br />
 
-                            <p className="prices">Preço: R$ 200,00</p>
-                            <p className="prices">Desconto: R$ 45,00</p><br />
-                            <p className="line"></p><br />
-                            <p className="prices">Total: R$ 155,00</p>
-                        </div>
 
+                                <img src="https://www.esports.net/br/wp-content/uploads/sites/3/2022/08/codigo-gta-san-andreas.jpeg " /><br />
+                                <p>GTA San Andres</p> <br />
+
+                                <p className="prices">Preço: R$ 200,00</p>
+                                <p className="prices">Desconto: R$ 45,00</p><br />
+                                <p className="line"></p><br />
+                                <p className="prices">Total: R$ 155,00</p>
+
+                            </div>
+                        
                     </Container>
 
 
