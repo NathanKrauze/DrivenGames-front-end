@@ -17,9 +17,9 @@ export default function App() {
       <tokenContext.Provider value={[token, setToken]}>
         <GamesContext.Provider value={{ games, setGames }}>
           <Routes>
-            <Route path="/home" element={<SignIn />} />
+            <Route path="/" element={<SignIn />} />
             <Route path="/cadastro" element={<SignUp />} />
-            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/cart" element={<CheckOut />} />
           </Routes>
         </GamesContext.Provider>
