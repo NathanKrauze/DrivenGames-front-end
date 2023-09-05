@@ -4,6 +4,7 @@ import Game from "../../components/Game";
 import Sidebar from "../../components/Sidebar";
 import { useContext, useEffect, useState } from "react";
 import GamesContext from "../../contexts/GamesContext";
+import tokenContext from "../../contexts/TokenContext";
 import axios from "axios";
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
     
     const [gameselected, setgameselected] = useState([])
 
+    const {token} = useContext(tokenContext);
     //mudar para o token do context
     const config = {
         headers:{
