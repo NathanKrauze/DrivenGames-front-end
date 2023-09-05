@@ -1,7 +1,7 @@
 import { styled } from "styled-components"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
-import { useState, useContext } from "react"
+import { useState, useContext, useRef, useEffect} from "react"
 import LogoDrivenGames from "../../Assets/LogoDrivenGames.png"
 import tokenContext from "../../contexts/TokenContext"
 
@@ -12,6 +12,12 @@ export default function SignIn() {
     const [password, setPassword] = useState("");
     const [token, setToken] = useContext(tokenContext);
     const navigate = useNavigate();
+    const inputReference = useRef(null);
+
+    
+       const click = () => {
+        inputReference.current.backgroundColor = "lightblue";
+       }
 
     function handleToken(dbToken) {
 
@@ -38,9 +44,9 @@ export default function SignIn() {
         <SignInContainer>
             <Form onSubmit={signIn}>
                 <Img src={LogoDrivenGames} />
-                <Input data-test="email" placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                <Input data-test="password" placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                <Button data-test="sign-in-submit">Entrar</Button>
+                <Input placeholder="E-mail" type="email" ref={inputReference} onClick={click} value={email} onChange={e => setEmail(e.target.value)} required />
+                <Input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                <Button>Entrar</Button>
             </Form>
 
             <Link to={'/cadastro'}>
