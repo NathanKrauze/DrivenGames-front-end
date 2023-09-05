@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from "react";
 import GamesContext from "../../contexts/GamesContext";
 import tokenContext from "../../contexts/TokenContext";
 import axios from "axios";
-import tokenContext from "../../contexts/TokenContext";
 
 export default function HomePage() {
 
