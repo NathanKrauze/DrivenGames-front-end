@@ -1,11 +1,20 @@
 import { styled } from "styled-components";
 
-export default function Game({ game }) {
-    const { name, image, price, havePromotion, promotion } = game;
+export default function Game({ game, gameselected, setgameselected }) {
+    const { name, image, price, havePromotion, promotion } = game
 
+
+    function addGame(game){
+
+        alert(`clicou no ${name}`)
+        const arrayGameSelected = [...gameselected,game]
+        setgameselected(arrayGameSelected)
+
+    } 
+    //console.log(gameselected)
     return (
         <>
-            <GameContainer>
+            <GameContainer onClick={()=>addGame(game)}>
                 <img src={image} alt="imgJogo" />
                 <TitleStyle>{name}</TitleStyle>
                 {havePromotion ? (
