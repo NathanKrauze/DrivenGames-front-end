@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import PayForm from "./PayForm"
 import axios from "axios"
 import tokenContext from "../../contexts/TokenContext"
+import { useNavigate } from "react-router-dom"
 
 export default function CheckOut() {
 
@@ -11,6 +12,8 @@ export default function CheckOut() {
     const [userBuy, setUserBuy] = useState([])
     const [token] = useContext(tokenContext)
 
+    const navigate = useNavigate()
+
     function payForm(e) {
 
         setStatus("disabled")
@@ -18,6 +21,8 @@ export default function CheckOut() {
     }
 
     useEffect(() => {
+
+        if(!token) return navigate("/")
 
         const config = {
             headers: {
