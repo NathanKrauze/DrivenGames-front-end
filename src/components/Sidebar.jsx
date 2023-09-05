@@ -15,13 +15,12 @@ export default function Sidebar(props){
             }
         }
 
-        axios.post(`${import.meta.env.VITE_API_URL}/game-selected`, gameselected, config)
+        axios.post(`${import.meta.env.VITE_API_URL}/add-games`, gameselected, config)
             .then(navigate("/cart"))
             .catch(err => alert(err.response.data))
     }
 
     function deleteGame(selected){
-        alert(`clicou no ${selected.name}`)
         const arrayDelete = gameselected.filter( del => del.name !== selected.name)
         console.log(arrayDelete)
         setgameselected(arrayDelete)

@@ -6,7 +6,6 @@ export default function Game({ game, gameselected, setgameselected }) {
 
     function addGame(game){
 
-        alert(`clicou no ${name}`)
         const arrayGameSelected = [...gameselected,game]
         setgameselected(arrayGameSelected)
 
