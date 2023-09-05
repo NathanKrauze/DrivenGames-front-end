@@ -3,12 +3,13 @@ import NavBar from "../../components/Navbar";
 import Game from "../../components/Game";
 import { useContext, useEffect } from "react";
 import GamesContext from "../../contexts/GamesContext";
+import tokenContext from "../../contexts/TokenContext";
 import axios from "axios";
 
 export default function HomePage() {
 
     const {games, setGames} = useContext(GamesContext);
-
+    const {token} = useContext(tokenContext);
     //mudar para o token do context
     const config = {
         headers:{
