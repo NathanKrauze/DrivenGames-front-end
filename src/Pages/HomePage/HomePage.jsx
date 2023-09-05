@@ -4,15 +4,17 @@ import Game from "../../components/Game";
 import { useContext, useEffect } from "react";
 import GamesContext from "../../contexts/GamesContext";
 import axios from "axios";
+import tokenContext from "../../contexts/TokenContext";
 
 export default function HomePage() {
 
     const {games, setGames} = useContext(GamesContext);
-
-    //mudar para o token do context
+    const [token] = useContext(tokenContext)
+    
+    
     const config = {
         headers:{
-            authorization: `Bearer ${"qweqwe"}`
+            authorization: `Bearer ${token}`
         }
     }
 

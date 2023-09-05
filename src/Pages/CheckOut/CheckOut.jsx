@@ -1,13 +1,17 @@
 import { styled } from "styled-components"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import PayForm from "./PayForm"
 import axios from "axios"
+import tokenContext from "../../contexts/TokenContext"
 
 export default function CheckOut() {
 
     const [status, setStatus] = useState("abled")
     const [pay, setPay] = useState("")
     const [userBuy, setUserBuy] = useState([])
+    const [token] = useContext(tokenContext)
+
+    
 
     function payForm(e) {
 
@@ -18,13 +22,13 @@ export default function CheckOut() {
     useEffect(() => {
 
         const config = {
-            headers:{
-                authorization: `Bearer ${"12fd56c6-ba57-45d0-b924-cb2c05d038ea"}`
+            headers: {
+                authorization: `Bearer ${token}`
             }
         }
 
 
-        axios.get(`${import.meta.env.VITE_API_URL}cart`)
+        axios.get(`${import.meta.env.VITE_API_URL}/cart`, config)
             .then((res) => setUserBuy(res.data))
             .catch((erro) => console.log(erro.error))
     }, [])

@@ -24,7 +24,7 @@ export default function PayForm({ setStatus, pay }) {
             }
         }
 
-        const URL = axios.post(`${import.meta.env.VITE_API_URL}cart`, form)
+        const URL = axios.post(`${import.meta.env.VITE_API_URL}/cart`, form)
             .then(() => {
                 //alert("Muito Obrigado pela sua compra, o seu jogo está liberado aproveite-o!")
                 //navigate('/home')
