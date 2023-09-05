@@ -18,7 +18,6 @@ export default function HomePage() {
     const config = {
         headers:{
             authorization: `Bearer ${"teste"}`
-            authorization: `Bearer ${token}`
         }
     }
 
