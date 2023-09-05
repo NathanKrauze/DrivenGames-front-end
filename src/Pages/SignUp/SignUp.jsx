@@ -26,11 +26,11 @@ export default function SignUp() {
         <SignUpContainer>
             <Form onSubmit={signUp}>
                 <Img src={LogoDrivenGames} />
-                <Input data-test="name" placeholder="Nome" type="text" value={name} onChange={e => setName(e.target.value)} required />
-                <Input data-test="email" placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                <Input data-test="password" placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                <Input data-test="conf-password" placeholder="Confirme a senha" type="password" value={confPassword} onChange={e => setConfPassword(e.target.value)} required />
-                <Button data-test="sign-up-submit">Cadastrar</Button>
+                <Input placeholder="Nome" type="text" value={name} onChange={e => setName(e.target.value)} required />
+                <Input placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                <Input placeholder="Senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                <Input placeholder="Confirme a senha" type="password" value={confPassword} onChange={e => setConfPassword(e.target.value)} required />
+                <Button>Cadastrar</Button>
             </Form>
 
             <Link to={"/home"}>
